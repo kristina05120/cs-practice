@@ -10,4 +10,4 @@ print(invalid_count)
 if city:
     print(f"{averages[city]:.1f}")
 else:
-    print("0.0"))
+    print("0.0")
