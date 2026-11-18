@@ -15,6 +15,7 @@ def csv_to_records(text: str) -> list[dict]:
         records.append(dict(zip(headers, values)))
     return records
 
+
 def parse_settings(lines: list[str]) -> dict:
     result = {}
     current_list_key = None
@@ -24,31 +25,31 @@ def parse_settings(lines: list[str]) -> dict:
             return True
         if value in ("false", "no"):
             return False
-        if "," in value:
-            return value
         try:
-            return int(value)
+            if value.isdigit() or (value.startswith('-') and value[1:].isdigit()):
+                return int(value)
         except ValueError:
             pass
-        try:
-            return float(value)
-        except ValueError:
-            pass
+
+        if "." in value:
+            try:
+                return float(value)
+            except ValueError:
+                pass
         return value
 
     for raw in lines:
-        line = raw.split("#", 1)[0].rstrip()
-        if not line.strip():
+        line = raw.split("#", 1)[0].strip()
+        if not line:
             continue
-        stripped = line.strip()
 
-        if stripped.startswith("- "):
+        if line.startswith("- "):
             if current_list_key is not None:
-                result[current_list_key].append(convert(stripped[2:].strip()))
+                result[current_list_key].append(convert(line[2:].strip()))
             continue
 
-        if ":" in stripped:
-            key, _, value = stripped.partition(":")
+        if ":" in line:
+            key, _, value = line.partition(":")
             key = key.strip()
             value = value.strip()
             if value == "":
@@ -57,6 +58,7 @@ def parse_settings(lines: list[str]) -> dict:
             else:
                 result[key] = convert(value)
                 current_list_key = None
+
     return result
 
 def merge_by_key(rows: list[dict], extra: dict, key: str = "id") -> list[dict]:
