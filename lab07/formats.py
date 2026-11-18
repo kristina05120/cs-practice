@@ -24,6 +24,8 @@ def parse_settings(lines: list[str]) -> dict:
             return True
         if value in ("false", "no"):
             return False
+        if "," in value:
+            return value
         try:
             return int(value)
         except ValueError:
