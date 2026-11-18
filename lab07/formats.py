@@ -25,7 +25,11 @@ def parse_settings(lines: list[str]) -> dict:
             return True
         if value in ("false", "no"):
             return False
-
+        if "," in value:
+            try:
+                return float(value.replace(",", "."))
+            except ValueError:
+                pass
         try:
             return int(value)
         except ValueError:
