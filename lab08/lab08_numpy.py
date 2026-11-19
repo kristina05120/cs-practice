@@ -22,3 +22,19 @@ print("индексы 2–5:", hours[2:6])
 print("каждый второй:", hours[::2])
 print("обратный порядок:", hours[::-1])
 
+#задание 3
+
+temperatures = np.array([
+    [12, 14, 13, 15],
+    [11, 13, 16, 17],
+    [10, 12, 15, 18],
+])
+print("shape:", temperatures.shape)
+print("ndim:", temperatures.ndim)
+print("size:", temperatures.size)
+print("temperatures[1,2]:", temperatures[1, 2])
+print("первая строка:", temperatures[0])
+print("последний столбец:", temperatures[:, -1])
+print("первые две строки без 1-го столбца:\n", temperatures[:2, 1:])
+print("центр 2x2:\n", temperatures[0:2, 1:3])
+
