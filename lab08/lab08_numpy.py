@@ -60,3 +60,36 @@ print(block)
 corner = matrix[-2:, -2:]
 print("правый нижний 2x2, shape:", corner.shape)
 print(corner)
+
+#задание 5
+
+vector = np.array([10, 20, 30, 40, 50])
+vector[1:4] = 0
+print("vector:", vector)
+
+small_matrix = np.arange(1, 10).reshape(3, 3)
+small_matrix[0, :] = -1
+small_matrix[1:, 1:] = 9
+print("small_matrix:\n", small_matrix)
+
+changed_hours = hours.copy()
+changed_hours[2:5] = 99
+changed_hours[1::2] = -1
+print("changed_hours:", changed_hours)
+print("исходный hours:", hours)
+
+changed_matrix = matrix.copy()
+changed_matrix[1, :] = 0
+changed_matrix[:, -1] = -1
+changed_matrix[1:4, 1:4] = 100
+print("changed_matrix:\n", changed_matrix)
+print("исходная matrix:\n", matrix)
+
+#задание 6
+
+numbers = np.arange(12)
+table = numbers.reshape(3, 4)
+transposed = table.T
+print("numbers shape:", numbers.shape)
+print("table shape:", table.shape)
+print("transposed shape:", transposed.shape)
