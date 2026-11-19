@@ -16,3 +16,9 @@ print("dtype:", hours.dtype)
 
 #задание 2
 
+print("третий:", hours[2])
+print("последний:", hours[-1])
+print("индексы 2–5:", hours[2:6])
+print("каждый второй:", hours[::2])
+print("обратный порядок:", hours[::-1])
+
