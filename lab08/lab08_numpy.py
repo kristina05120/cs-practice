@@ -38,3 +38,25 @@ print("последний столбец:", temperatures[:, -1])
 print("первые две строки без 1-го столбца:\n", temperatures[:2, 1:])
 print("центр 2x2:\n", temperatures[0:2, 1:3])
 
+#задание 4
+
+matrix = np.arange(1, 26).reshape(5, 5)
+top3 = matrix[:3]
+print("первые 3 строки, shape:", top3.shape)
+print(top3)
+
+last2 = matrix[-2:]
+print("последние 2 строки, shape:", last2.shape)
+print(last2)
+
+first2cols = matrix[:, :2]
+print("первые 2 столбца, shape:", first2cols.shape)
+print(first2cols)
+
+block = matrix[1:4, 2:5]
+print("строки 1–3, столбцы 2–4, shape:", block.shape)
+print(block)
+
+corner = matrix[-2:, -2:]
+print("правый нижний 2x2, shape:", corner.shape)
+print(corner)
